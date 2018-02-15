@@ -6,17 +6,17 @@ $('#searchForm').click(function () {
     //success: function (results) {
       //console.log(results);
     //}
-  }).done(handleResponse)
-  fail(handleError);
+  }).done(handleResponse).fail(handleError);
 
   function handleResponse(pokeData) {
+    $('.pokeContainer').empty();
     const pokeImg = pokeData.sprites.front_default;
     const pokeName = pokeData.name;
-    $('.pokeContainer').append(`<div><img src="${pokeImg}"><h1>${pokeName}</h1></div>`);
+    $('.pokeContainer').append(`<img class="img-response" src="${pokeImg}"><h3><strong>${pokeName}</strong></h3>`);
   }
 
   function handleError() {
-    console.log('Qué pena entrenador, para otra ocasión :(');
+    console.log('Que pena entrenador, para otra ocasión :(');
   }
 })
 
