@@ -18,12 +18,9 @@ $('#searchForm').click(function () {
     const pokeNumber = pokeData.order;
     const pokeExperience = pokeData.base_experience;
     const abilities = pokeData.abilities[0].ability.name;
-
-    $('.pokeContainer').append(`<img class="img-response imgModal" src="${pokeImg}"><h3><strong>${pokeName}</strong></h3><p>${pokeData.weight}</p><p>${pokeData.order}</p><p>${pokeData.base_experience}</p><p>${abilities}</p>`);
-    $('.img-response').click(function() {
-      $('.modalBody').append
-
-    })
+    $('.modal-body').empty();
+    $('.pokeContainer').append(`<img class="img-response imgModal" src="${pokeImg}" data-toggle="modal" data-target="#myModal"><h3><strong>${pokeName}</strong></h3>`);
+    $('.modal-body').append(`<p>Peso: ${pokeData.weight}</p><p>Orden: ${pokeData.order}</p><p>Experiencia: ${pokeData.base_experience}</p><p>Habilidades: ${abilities}</p>`);
   }
 
   function handleError() {
