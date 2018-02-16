@@ -1,16 +1,19 @@
-
-$('#searchForm').click(function () {
+/* Evento de click del input */
+$('#searchForm').click(function() {
+  // Guardando el valor del input
   const pokemonNa = $('#pokeName').val();
   const pokemonName = pokemonNa.toLowerCase();
+  // Lamado a la API
   $.ajax({
     url: `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
     type: 'GET',
     datatype: 'json',
-    success: function (results) {
-    console.log(results);
+    success: function(results) {
+      console.log(results);
     }
   }).done(handleResponse).fail(handleError);
 
+  /* Función que crea la estructura de la web, ante una respuesta positiva a la llamada de la api*/
   function handleResponse(pokeData) {
     $('.pokeContainer').empty();
     const pokeImg = pokeData.sprites.front_default;
@@ -24,10 +27,11 @@ $('#searchForm').click(function () {
     $('.modal-body').append(`<p>Peso: ${pokeData.weight}</p><p>Orden: ${pokeData.order}</p><p>Experiencia: ${pokeData.base_experience}</p><p>Habilidades: ${abilities}</p>`);
   }
 
+  /* Función error*/
   function handleError() {
     console.log('Que pena entrenador, para otra ocasión :(');
   }
-})
+});
 
 /*
 const search = function(event) {
