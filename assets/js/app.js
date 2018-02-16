@@ -1,6 +1,7 @@
 
 $('#searchForm').click(function () {
-  const pokemonName = $('#pokeName').val();
+  const pokemonNa = $('#pokeName').val();
+  const pokemonName = pokemonNa.toLowerCase();
   $.ajax({
     url: `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
     type: 'GET',
